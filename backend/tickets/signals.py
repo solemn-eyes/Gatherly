@@ -1,8 +1,8 @@
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-from backend.tickets.models import Ticket
-from backend.tickets.services.ticket_service import assign_qr
+from .models import Ticket
+from .services.ticket_service import assign_qr
 from payments.models import Transaction
 
 @receiver(post_save, sender=Transaction)
@@ -26,7 +26,7 @@ def process_successful_payment(
 
     for item in order.items.all():
 
-        tier = item.tier
+        tier = item.ticket_tier
 
         tier.sold += item.quantity
 
