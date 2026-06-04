@@ -93,7 +93,7 @@ class Ticket(models.Model):
     order_item = models.ForeignKey(OrderItem, on_delete=models.CASCADE, related_name='tickets')
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     holder_user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    qr_token = models.CharField(max_length=255, unique=True)
+    qr_token = models.CharField(max_length=255, unique=True, blank=True, null=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="active")
     checked_in_at = models.DateTimeField(blank=True, null=True)
 

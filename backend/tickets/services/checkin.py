@@ -1,8 +1,8 @@
 import jwt
 
-from backend.accounts.models import User
-from backend.organizers.models import Organizer
-from config import settings
+from accounts.models import User
+from organizers.models import Organizer
+from django.conf import settings
 from tickets.models import Ticket
 from django.utils import timezone
 from django.db.models.signals import post_save
@@ -52,5 +52,5 @@ def create_organizer_profile(
 
     Organizer.objects.create(
         user=instance,
-        org_name=instance.username
+        organization_name=instance.username
     )
